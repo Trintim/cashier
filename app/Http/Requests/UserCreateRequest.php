@@ -34,7 +34,19 @@ class UserCreateRequest extends FormRequest
             ],
             'password' => [
                 $this->route()->user ? 'nullable' : 'required', 'confirmed', 'min:6'
-            ]
+            ],
+            'phone' => [
+                'required'
+            ],
+            'access_level' => [
+                'required'
+            ],
+            'image' => [
+                'required'
+            ],
+            'occupation' => [
+                'required'
+            ],
         ];
     }
 }

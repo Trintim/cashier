@@ -54,9 +54,14 @@ class User extends Authenticated implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
-        'access_level',
+        'phone',
+        'occupation',
+        'email',
         'password',
-        'locale'
+        'access_level',
+        'locale',
+        'role',
+        'client_id'
     ];
 
     /**
@@ -88,8 +93,8 @@ class User extends Authenticated implements MustVerifyEmail
         return match ($this->access_level) {
             0 => __('Administrator'),
             1 => __('Moderator'),
-            2 => __('Editor'),
-            default => __('Member'),
+            2 => __('Client'),
+            default => __('Usuário'),
         };
     }
 }

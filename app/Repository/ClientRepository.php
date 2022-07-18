@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Models\Client;
 use App\Repository\Interfaces\AddressRepositoryInterface;
 use App\Repository\Interfaces\ClientRepositoryInterface;
+use Hash;
 use Illuminate\Database\Eloquent\Model;
 use JetBrains\PhpStorm\Pure;
 
@@ -32,6 +33,7 @@ class ClientRepository extends BaseRepository implements ClientRepositoryInterfa
         return \DB::transaction(function () use ($attributes) {
             $address = $this->addressRepository->create($attributes);
             $attributes['address_id'] = $address->id;
+            $attributes['password'] = Hash::make($attributes['password']);
             return parent::create($attributes);
         });
     }

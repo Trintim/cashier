@@ -36,11 +36,13 @@ class Address extends Model
     use HasFactory;
 
     protected $fillable = [
-        'street',
-        'district',
-        'city',
+        'addrs',
         'state',
+        'city',
         'country',
+        'ngbh',
+        'complement',
+        'number',
         'zip_code',
     ];
 
@@ -54,11 +56,13 @@ class Address extends Model
     public static function rules(): array
     {
         return [
-            'street' => self::NORMAL_NAME_RULE,
-            'district' => self::NORMAL_NAME_RULE,
+            'addrs' => self::NORMAL_NAME_RULE,
             'city' => self::NORMAL_NAME_RULE,
-            'state' => self::NORMAL_NAME_RULE,
+            'state' => ['required', 'min:2', 'max:255', 'string'],
             'country' => self::NORMAL_NAME_RULE,
+            'ngbh' => self::NORMAL_NAME_RULE,
+            'complement' => self::NORMAL_NAME_RULE,
+            'number' => ['required', 'max:255', 'string'],
             'zip_code' => ['required', 'digits:8', 'string'],
         ];
     }

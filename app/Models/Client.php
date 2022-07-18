@@ -41,8 +41,15 @@ class Client extends Model
         'name',
         'email',
         'cpf',
+        'profession',
+        'relationStatus',
+        'naturality',
+        'rg',
+        'orgExpRG',
         'phone',
-        'address_id'
+        'address_id',
+        'plan',
+        'password'
     ];
 
     protected $with = [

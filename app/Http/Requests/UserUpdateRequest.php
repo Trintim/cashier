@@ -26,7 +26,10 @@ class UserUpdateRequest extends FormRequest
         return [
             'name' => [
                 'required', 'min:3'
-            ]
+            ],
+            'image' => [],
+            'occupation' => [],
+            'access_level' => []
         ];
     }
 }

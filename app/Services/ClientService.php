@@ -8,15 +8,17 @@ class ClientService
 {
     private ClientRepositoryInterface $clientRepository;
     private LogService $logService;
+    private UserService $userService;
 
     /**
      * @param ClientRepositoryInterface $clientRepositoryInterface
      * @param LogService $logService
      */
-    public function __construct(ClientRepositoryInterface $clientRepositoryInterface, LogService $logService)
+    public function __construct(ClientRepositoryInterface $clientRepositoryInterface, LogService $logService, UserService $userService)
     {
         $this->clientRepository = $clientRepositoryInterface;
         $this->logService = $logService;
+        $this->userService = $userService;
     }
 
     /**
@@ -40,6 +42,23 @@ class ClientService
     public function create(array $attributes): \Illuminate\Database\Eloquent\Model
     {
         $client = $this->clientRepository->create($attributes);
+
+        $user = [
+            'name' => $attributes['name'],
+            'phone' => $attributes['phone'],
+            'image' => 'clients/defaultUser.jpg',
+            'occupation' => $attributes['profession'],
+            'email' => $attributes['email'],
+            'password' => $attributes['password'],
+            'access_level' => 50,
+            'role' => 'client',
+            'email_verified_at' => null,
+            'locale' => 'pt-BR',
+            'client_id' => $client->id,
+            'remember_token' => null,
+        ];
+
+        $this->userService->create($user);
         $this->logService->create($client->id, $client->name, 'clients.create');
         return $client;
     }

@@ -18,6 +18,13 @@ return new class extends Migration {
             $table->string('cpf')->unique();
             $table->string('email')->unique();
             $table->string('phone');
+            $table->string('profession');
+            $table->string('naturality');
+            $table->string('rg');
+            $table->string('orgExpRG');
+            $table->string('relationStatus');
+            $table->string('plan')->nullable();
+            $table->string('password');
             $table->foreignId('address_id')->constrained('addresses')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
