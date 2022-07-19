@@ -17,7 +17,7 @@
                             <div>
                                 <img src="{{ asset('/assets/img/linkedin.svg') }}" alt="linkedin-logo">
                                 <img src="{{ asset('/assets/img/facebook.svg') }}" alt="facebook-logo">
-                                <h4>Domani Consultoria Internacional</h3>
+                                <h4>Hub Cricare</h3>
                             </div>
                             <div>
                                 <img src="{{ asset('/assets/img/instagram.svg') }}" alt="instagram-logo">

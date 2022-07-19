@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Web\Controllers;
+namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
-class ClientDashBoardController extends Controller
+class ClientDashboardController extends Controller
 {
     public function index()
     {

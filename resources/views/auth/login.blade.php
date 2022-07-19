@@ -5,7 +5,7 @@ Dashboard')])
     <div class="container" style="height: auto;">
         <div class="row align-items-center">
             <div class="col-md-9 ml-auto mr-auto mb-3 text-center">
-                <h3>{{ __('Welcome to the') }} {{ config('app.name') }} CMS
+                <h3>Hub do Cricaré
                 </h3>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">

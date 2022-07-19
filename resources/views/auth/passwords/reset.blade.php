@@ -1,70 +1,63 @@
-@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => '', 'title' => __('Material Dashboard')])
+@extends('layout.site')
+
+@section('title')
+    Recuperar Senha
+@endsection
 
 @section('content')
-<div class="container" style="height: auto;">
-  <div class="row align-items-center">
-    <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-      <form class="form" method="POST" action="{{ route('password.update') }}">
-        @csrf
 
-        <input type="hidden" name="token" value="{{ $token }}">
-        <div class="card card-login card-hidden mb-3">
-          <div class="card-header card-header-primary text-center">
-            <h4 class="card-title"><strong>{{ __('Reset Password') }}</strong></h4>
-          </div>
-          <div class="card-body ">
-            <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }} mt-3">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">email</i>
-                  </span>
+    <main id="main">
+        <section id="login">
+            <div class="login">
+                <form class="login-form-container" action="{{ route('password.update') }}" method="POST">
+                    <img class="login-logo" src="{{ asset('/assets/img/LogoCompleta.png') }}" alt="logo">
+                    @csrf
+
+                    <!-- pag 2 -->
+                    <div id="step_2" class="step">
+                        <div class="form-group">
+                            <input type="hidden" name="token" value="{{$token}}">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" value="{{ $email }}" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Redefinição de senha">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password-2" name="password_confirmation" placeholder="Repita a senha">
+                        </div>
+                    </div>
+
+                    <!-- button -->
+                    <div class="form-group" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                        <button type="submit" id="submit" class="btn btn-primary">Salvar Senha</button>
+                    </div>
+                </form>
+                <div style="display: flex; justify-content: center; margin-top: 30px">
+                    <button id="next" class="next btn btn-primary" onclick="nextPrev(1)" style="margin-bottom: 50px">PROSSEGUIR</button>
                 </div>
-                <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ old('email') }}" required>
-              </div>
-              @if ($errors->has('email'))
-                <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
-                  <strong>{{ $errors->first('email') }}</strong>
-                </div>
-              @endif
             </div>
-            <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">lock_outline</i>
-                  </span>
+            <div class="cadastre-se">
+                <div style="display: flex; justify-content: flex-end;">
+                    <img class="orange-square" src="{{ asset('/assets/img/orange-square.svg') }}" alt="orange-square">
                 </div>
-                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" required>
-              </div>
-              @if ($errors->has('password'))
-                <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
-                  <strong>{{ $errors->first('password') }}</strong>
+                <div class="cadastro-container">
+                    <div>
+                        <h2 class="cadastre-se-title">Ainda não é cliente?</h2>
+                        <p class="cadastre-se-text">Cadastre-se já clicando no botão abaixo!</p>
+                    </div>
+                    <div>
+                        <a href="{{ route('cadastro') }}">
+                            <button type="button" class="btn btn-primary">CADASTRE-SE</button>
+                        </a>
+                    </div>
                 </div>
-              @endif
+                <div>
+                    <img class="blue-square" src="{{ asset('/assets/img/blue-square.svg') }}" alt="blue-square">
+                </div>
             </div>
-            <div class="bmd-form-group{{ $errors->has('password_confirmation') ? ' has-danger' : '' }} mt-3">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">lock_outline</i>
-                  </span>
-                </div>
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Confirm Password...') }}" required>
-              </div>
-              @if ($errors->has('password_confirmation'))
-                <div id="password_confirmation-error" class="error text-danger pl-3" for="password_confirmation" style="display: block;">
-                  <strong>{{ $errors->first('password_confirmation') }}</strong>
-                </div>
-              @endif
-            </div>
-          </div>
-          <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Reset Password') }}</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+        </section>
+    </main>
+
 @endsection

@@ -6,8 +6,8 @@ use App\Http\Controllers\Web\LogController;
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\ClientController;
-use App\Http\Web\Controllers\ClientDashBoardController;
-use App\Http\Web\Controllers\SistemaController;
+use App\Http\Controllers\Web\ClientDashboardController;
+use App\Http\Controllers\Web\SistemaController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
@@ -30,16 +30,12 @@ Route::middleware('locale')->group(function () {
     //Change system language route
     Route::put('/locale', [LocaleController::class, 'setLocale'])->name('locale');
 
-    Route::get('/', function () {
-        return redirect()->route('dashboard');
-    });
-
     Auth::routes();
 
     Route::middleware('auth')->group(function () {
 
         //Email verification routes
-        Route::get('/email/verify', [ClientDashBoardController ::class, 'verify'])->name('verification.notice');
+        Route::get('/email/verify', [ClientDashboardController::class, 'verify'])->name('verification.notice');
 
         Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
             $request->fulfill();
