@@ -57,10 +57,14 @@ class UserController extends Controller
     public function store(UserCreateRequest $request): \Illuminate\Http\RedirectResponse
     {
         $data = $request->validated();
-        if ($data['image'] != null){
+
+
+        if ($data['image'] != null) {
             $data['image'] = $request->file('image')->store('user', 'public');
         }
+
         $data['role'] = 'admin';
+
         $this->userService->create($data);
         return redirect()->route('user.index')->with('success', __('User created with success!'));
     }
@@ -103,12 +107,14 @@ class UserController extends Controller
 
         $userLogged = @Auth()->user();
         $this->authorize('update', $userLogged);
-        if ($request->hasFile('image')){
+
+        if ($request->hasFile('image')) {
             Storage::delete('public/' . $user->image);
             $data['image'] = $request->file('image')->store('user', 'public');
         }
 
         $this->userService->update($data, $id);
+
         return redirect(route('user.index'))->with('success', __('User updated with success!'));
     }
 
@@ -121,13 +127,14 @@ class UserController extends Controller
     public function destroy(int $id): \Illuminate\Http\RedirectResponse
     {
         $userLogged = @Auth()->user();
-        $this->authorize('delete', $userLogged);
+        $this->authorize('update', $userLogged);
 
         $user = User::find($id);
-        if ($user->image != null){
+        if ($user->image != null) {
             Storage::delete('public/' . $user->image);
         }
         $this->userService->destroy($id);
+
         return redirect()->route('user.index')->with('success', __('User deleted with success!'));
     }
 }

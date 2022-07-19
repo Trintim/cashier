@@ -1,0 +1,549 @@
+:root {
+    --branco: #ffffff;
+    --preto: #000000;
+    --azul: #04316d;
+    --azul-escuro: #0c283b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-decoration: none !important;
+    box-sizing: border-box;
+    outline: none !important;
+}
+
+/* Nav Bar */
+
+#header .navbar {
+    background-color: var(--branco);
+    height: 76px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.12),
+        0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.nav-link a {
+    font-family: "Glacial Indifference";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 16px;
+    color: var(--azul);
+}
+
+@media (min-width: 481px) {
+    .nav-logo-mobile {
+        display: none;
+    }
+}
+@media (max-width: 480px) {
+    .nav-logo {
+        display: none;
+    }
+
+    .nav-link a {
+        font-size: 16px;
+    }
+}
+
+/* Footer */
+
+#footer {
+    width: 100%;
+    height: 112px;
+    bottom: 0;
+    background-color: white;
+}
+
+#footer .container {
+    max-width: 624px;
+}
+
+#footer .container .row {
+    height: 112px;
+}
+
+.social {
+    flex-direction: column;
+}
+
+.social-container div {
+    display: flex;
+    width: 100%;
+    padding: 0 15px 0 15px;
+    margin: 0 0 9px 0;
+}
+
+.social h3 {
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--azul);
+    margin: 0px;
+}
+
+.pesquisa-container h3 {
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--azul);
+    margin-bottom: 10px;
+}
+.social h4 {
+    font-family: "Poppins";
+    font-weight: 275;
+    font-size: 12px;
+    color: var(--azul);
+    margin: 0px;
+}
+
+.pesquisa-container a {
+    font-family: "Poppins";
+    font-weight: 400;
+    font-size: 10px;
+    color: var(--azul);
+    margin: 2px;
+}
+
+.social img {
+    margin-right: 8px;
+}
+
+.footer-logo img {
+    margin-left: -25px;
+}
+
+.line {
+    background-color: var(--azul);
+    width: 1px !important;
+    height: 80px;
+}
+
+@media (min-width: 771px) {
+    .footer-mobile {
+        display: none !important;
+    }
+}
+
+@media (max-width: 770px) {
+    .row {
+        flex-direction: row;
+        flex-wrap: nowrap !important;
+    }
+
+    .footer-desktop {
+        display: none !important;
+    }
+
+    .footer-logo img {
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 400px) {
+    .footer-logo img {
+        width: 130px;
+    }
+}
+
+/* Whatsapp */
+
+.absolute {
+    position: absolute;
+}
+
+.whatsapp-button {
+    border-style: none;
+    cursor: pointer;
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    left: 24px;
+    bottom: 24px;
+    background: var(--azul);
+    border-radius: 50%;
+    z-index: 9998;
+}
+
+@media (max-width: 770px) {
+    .whatsapp-button {
+        display: none;
+    }
+}
+
+/* Landing Page */
+
+#landing {
+    margin: 77px 0 112px 0;
+}
+
+.bg-img {
+    width: 65%;
+}
+
+.text {
+    position: absolute;
+    display: flex;
+    width: 53%;
+    height: auto;
+    flex-direction: column;
+    right: 7%;
+    top: 22vw;
+    align-items: flex-end;
+}
+
+.main-title {
+    font-family: "Glacial Indifference";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3.4vw;
+    text-align: right;
+    color: var(--preto);
+}
+
+.main-text {
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2vw;
+    line-height: 2.5vw;
+    text-align: right;
+    color: var(--preto);
+    width: 82%;
+    margin-top: 10px;
+}
+
+.btns {
+    gap: 20px;
+}
+
+.main-btn {
+    width: 22vw;
+    height: 5vw;
+    background: var(--azul) !important;
+    border-radius: 1.5vw !important;
+    font-family: "Glacial Indifference" !important;
+    font-weight: 400 !important;
+    font-size: 2vw !important;
+}
+.main-btn:hover {
+    background: var(--branco) !important;
+    color: var(--azul) !important;
+}
+
+@media (min-width: 771px) {
+    .bg-img-m {
+        display: none;
+    }
+}
+
+@media (max-width: 770px) {
+    .bg-img {
+        display: none;
+    }
+
+    .bg-img-m {
+        width: 100%;
+    }
+
+    .text {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        right: auto;
+        top: 70vw;
+        align-items: flex-end;
+    }
+
+    .main-title {
+        font-family: "Glacial Indifference";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 38px;
+        text-align: right;
+        padding: 0 20px 0 20px;
+    }
+
+    .main-text {
+        font-family: "Raleway";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: right;
+        color: var(--preto);
+        width: 100%;
+        margin-top: 10px;
+        padding: 0 20px 0 10px;
+    }
+
+    .btns {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .main-btn {
+        width: 328px;
+        height: 40px;
+        background: var(--azul) !important;
+        border-radius: 1.5vw !important;
+        font-family: "Glacial Indifference" !important;
+        font-weight: 700 !important;
+        font-size: 12px !important;
+    }
+}
+
+/* soluções */
+
+.solucoes-dkt {
+    width: 100%;
+}
+
+.solucoes-mb {
+    width: 100%;
+}
+
+@media (min-width: 771px) {
+    .solucoes-mb {
+        display: none;
+    }
+}
+
+@media (max-width: 770px) {
+    .solucoes-dkt {
+        display: none;
+    }
+}
+
+/* login */
+
+#login {
+    margin-top: 76px;
+    display: flex;
+}
+
+.cadastre-se {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--azul-escuro);
+    width: 65%;
+    height: 977px;
+}
+
+.cadastre-se div {
+    height: 33.33%;
+}
+
+.login {
+    width: 35%;
+}
+
+.form-control {
+    width: 392px !important;
+    height: 64px;
+    border: 1px solid #e6eaed !important;
+    border-radius: 8px !important;
+}
+
+.form-control::placeholder {
+    font-family: "Raleway";
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 16px;
+}
+
+.form-group .btn,
+.next {
+    width: 392px;
+    height: 64px;
+    border-radius: 16px !important;
+    background-color: var(--azul) !important;
+    font-family: "Glacial Indifference" !important;
+    font-weight: 400 !important;
+    font-size: 24px !important;
+}
+
+.next2 {
+    width: 196px !important;
+}
+
+.form-group .btn {
+    margin-top: 30px;
+}
+
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.login-logo {
+    margin: 111px 0 42px 0;
+}
+
+.esqueci {
+    font-family: "Glacial Indifference";
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #545454;
+}
+
+.blue-square {
+    bottom: -45px;
+    position: relative;
+}
+
+.orange-square {
+    position: relative;
+    top: -65px;
+}
+
+.cadastro-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cadastre-se-title {
+    font-family: "Glacial Indifference";
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+    color: var(--branco);
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.cadastre-se-text {
+    font-family: "Raleway";
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 32px;
+    color: var(--branco);
+    text-align: center;
+}
+
+.cadastro-container .btn {
+    margin-top: 40px;
+    width: 391px;
+    height: 62px;
+    background: var(--azul-escuro);
+    box-shadow: 4px 4px 4px rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    border: 1px solid rgba(248, 182, 42, 1);
+    font-family: "Glacial Indifference";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 16px;
+}
+
+.cadastre-se-2 h2 {
+    font-family: "Raleway";
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 0;
+}
+.cadastre-se-2 a {
+    font-family: "Glacial Indifference";
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.25px;
+    color: #ca9a3a;
+}
+
+.triangle {
+    top: 0 !important;
+    object-fit: scale-down;
+}
+
+.square-2 {
+    bottom: 0 !important;
+    width: 450px;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+@media (min-width: 883px) {
+    .cadastre-se-2 {
+        display: none;
+    }
+}
+
+@media (max-width: 1140px) {
+    .form-group .btn,
+    .next {
+        width: 300px;
+    }
+
+    .next2 {
+        width: 150px !important;
+    }
+
+    .form-control {
+        width: 300px !important;
+    }
+}
+
+@media (max-width: 883px) {
+    .cadastre-se {
+        display: none;
+    }
+    .cadastre-se-2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        margin-bottom: 60px;
+        gap: 26px;
+    }
+    .login {
+        width: 100%;
+    }
+    .form-group .btn,
+    .next {
+        width: 328px;
+        height: 40px;
+        font-family: "Glacial Indifference";
+        font-weight: 700 !important;
+        font-size: 12px !important;
+        line-height: 16px !important;
+        letter-spacing: 1.25px !important;
+        border-radius: 8px !important;
+    }
+
+    .next2 {
+        width: 164px !important;
+    }
+
+    .form-control {
+        width: 328px !important;
+        height: 40px;
+    }
+    .esqueci {
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .form-control::placeholder {
+        font-size: 14px;
+    }
+    .login-logo {
+        margin: 56px 0 42px 0;
+    }
+}

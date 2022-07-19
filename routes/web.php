@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\SistemaController;
 use App\Http\Controllers\Web\DashboardController;
 use App\Http\Controllers\Web\LocaleController;
 use App\Http\Controllers\Web\LogController;
@@ -7,9 +9,10 @@ use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\ClientController;
 use App\Http\Controllers\Web\ClientDashboardController;
-use App\Http\Controllers\Web\SistemaController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
+
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +24,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [SistemaController::class, 'index'])->name('usuario');
 
+Route::get('/', [SistemaController::class, 'index'])->name('usuario');
+// Route::get('/cliente', [ClientDashboardController::class, 'index'])->name('logado');
+// Route::get('/login', [SistemaController::class, 'loginSis'])->name('loginuser');
 Route::get('/cadastro', [SistemaController::class, 'cadastro'])->name('cadastro');
+// Route::get('/recuperar', [SistemaController::class, 'senha'])->name('password.request');
 
 Route::middleware('locale')->group(function () {
 
@@ -33,7 +39,6 @@ Route::middleware('locale')->group(function () {
     Auth::routes();
 
     Route::middleware('auth')->group(function () {
-
         //Email verification routes
         Route::get('/email/verify', [ClientDashboardController::class, 'verify'])->name('verification.notice');
 
@@ -53,12 +58,13 @@ Route::middleware('locale')->group(function () {
             Route::get('/', [ClientDashboardController::class, 'index'])->name('logado');
         });
 
-        Route::middleware('AdminAcess', 'verified')->prefix('/admin')->group(function (){
-            //Dashboard routes
-            Route::any('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-            //Client routes
+        //Admin (etc) Logado
+        Route::middleware('AdminAcess', 'verified')->prefix('/admin')->group(function () {
+            //Client CRUD routes
             Route::resource('client', ClientController::class);
 
+            //Dashboard routes
+            Route::any('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
             //User profile routes
             Route::controller(ProfileController::class)->name('profile.')->group(function () {
@@ -70,7 +76,6 @@ Route::middleware('locale')->group(function () {
             Route::middleware('IsAdmin')->group(function () {
                 //Log routes
                 Route::any('log', [LogController::class, 'index'])->name('log.index');
-
                 //User CRUD routes
                 Route::resource('user', UserController::class);
                 //Client CRUD routes
@@ -79,4 +84,6 @@ Route::middleware('locale')->group(function () {
         });
     });
 });
+
 Route::post('/publicStore', [ClientController::class, 'publicStore'])->name('publicStore');
+// Route::put('/publicUpdate', [ClientController::class, 'publicUpdate'])->name('publicUpdate');

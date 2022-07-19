@@ -9,8 +9,8 @@
     <main id="main">
         <section id="login">
             <div class="login">
-                <form class="login-form-container" action="{{ route('login') }}" method="POST">
-                    <img class="login-logo" src="{{ asset('/assets/img/LogoCompleta.png') }}" alt="logo">
+                <form class="login-form-container" action="{{ route('dashboard') }}" method="POST">
+                    <img class="login-logo" src="{{ asset('/assets/img/') }}" alt="logo">
                     @csrf
                     <div class="form-group">
                         <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="Digite seu e-mail">

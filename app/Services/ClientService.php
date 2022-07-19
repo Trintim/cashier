@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repository\Interfaces\ClientRepositoryInterface;
+use Illuminate\Support\Facades\Hash;
 
 class ClientService
 {
@@ -59,6 +60,7 @@ class ClientService
         ];
 
         $this->userService->create($user);
+
         $this->logService->create($client->id, $client->name, 'clients.create');
         return $client;
     }

@@ -3,7 +3,7 @@
         <nav class="container">
             <div class="logo">
                 <a href="{{ route('usuario') }}">
-                    <img class="nav-logo" src="{{ asset('/assets/img/LogoHorizontal.png') }}" alt="logo">
+                    <img class="nav-logo" src="{{ asset('/assets/img/') }}" alt="logo">
                     <img class="nav-logo-mobile" src="{{ asset('/assets/img/Logo.png') }}" alt="logo-mobile">
                 </a>
             </div>

@@ -4,7 +4,7 @@
             <div class="row footer-desktop">
                 <div class="footer-logo col-md-3 d-flex justify-content-center align-items-center contact-box">
                     <a href="#">
-                        <img src="{{ asset('/assets/img/LogoFooter.png') }}" alt="logo-footer">
+                        <img src="{{ asset('/assets/img/') }}" alt="logo-footer">
                     </a>
                 </div>
                 <div class="social col-md-6 d-flex justify-content-center align-items-center contact-box">
@@ -17,11 +17,11 @@
                             <div>
                                 <img src="{{ asset('/assets/img/linkedin.svg') }}" alt="linkedin-logo">
                                 <img src="{{ asset('/assets/img/facebook.svg') }}" alt="facebook-logo">
-                                <h4>Hub Cricare</h3>
+                                <h4>Hub do Cricaré</h3>
                             </div>
                             <div>
                                 <img src="{{ asset('/assets/img/instagram.svg') }}" alt="instagram-logo">
-                                <h4>@domaniconsultoria</h3>
+                                <h4>@hubdocricare</h3>
                             </div>
                         </div>
                         <div class="line"></div>

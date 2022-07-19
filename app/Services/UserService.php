@@ -45,6 +45,7 @@ class UserService
         $this->logService->create($user->id, $user->name, 'users.create');
 
         event(new Registered($user));
+
         return $user;
     }
 

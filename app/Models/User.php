@@ -54,14 +54,14 @@ class User extends Authenticated implements MustVerifyEmail
     protected $fillable = [
         'name',
         'image',
-        'email',
         'phone',
         'occupation',
+        'email',
         'password',
         'access_level',
         'locale',
         'role',
-        'client_id'
+        'client_id',
     ];
 
     /**
