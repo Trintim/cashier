@@ -17,10 +17,14 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'Administrator',
-            'email' => 'admin@adapti.info',
+            'image' => '',
+            'phone' => 9999999999,
+            'occupation' => '',
+            'email' => 'hubcricare@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
             'access_level' => 0,
+            'role' => 'admin',
             'created_at' => now(),
             'updated_at' => now()
         ]);

@@ -74,7 +74,7 @@ class ClientUpdateRequest extends FormRequest
                 'required', 'min:3'
             ],
             'number' => [
-                'required', 'numeric', 'min:3'
+                'required', 'numeric', 'min:2'
             ],
             'plan' => [
                 'required'

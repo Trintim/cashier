@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\User;
 use App\Services\UserService;
+use Auth;
+use Storage;
 
 class UserController extends Controller
 {
@@ -40,6 +43,8 @@ class UserController extends Controller
      */
     public function create(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
+        $userLogged = @Auth::user();
+        $this->authorize('create', $userLogged);
         return view('admin.user.crud');
     }
 
@@ -52,6 +57,10 @@ class UserController extends Controller
     public function store(UserCreateRequest $request): \Illuminate\Http\RedirectResponse
     {
         $data = $request->validated();
+        if ($data['image'] != null){
+            $data['image'] = $request->file('image')->store('user', 'public');
+        }
+        $data['role'] = 'admin';
         $this->userService->create($data);
         return redirect()->route('user.index')->with('success', __('User created with success!'));
     }
@@ -90,6 +99,14 @@ class UserController extends Controller
     public function update(UserUpdateRequest $request, int $id): \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
     {
         $data = $request->validated();
+        $user = User::find($id);
+        $userLogged = @Auth::user();
+        $this->authorize('update', $userLogged);
+        if ($request->hasFile('image')){
+            Storage::delete('public/'. $user->image);
+            $data['image'] = $request->file('image')->store('user', 'public');
+        }
+
         $this->userService->update($data, $id);
         return redirect(route('user.index'))->with('success', __('User updated with success!'));
     }
@@ -102,6 +119,13 @@ class UserController extends Controller
      */
     public function destroy(int $id): \Illuminate\Http\RedirectResponse
     {
+        $userLogged = @Auth()->user();
+        $this->authorize('delete', $userLogged);
+
+        $user = User::find($id);
+        if ($user->image != null){
+            Storage::delete('public/'. $user->image);
+        }
         $this->userService->destroy($id);
         return redirect()->route('user.index')->with('success', __('User deleted with success!'));
     }

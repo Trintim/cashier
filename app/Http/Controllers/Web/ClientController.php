@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ClientCreateRequest;
 use App\Http\Requests\ClientUpdateRequest;
 use App\Services\ClientService;
+use Hash;
 
 class ClientController extends Controller
 {
@@ -89,7 +90,17 @@ class ClientController extends Controller
      */
     public function update(ClientUpdateRequest $request, int $id): \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
     {
-        $data = $request->validated();
+        if(isset($request['password']) && !(is_null($request['password']))){
+            $request->validated([
+                'password' => 'required|string|min:8'
+            ]);
+            $data = $request->validated();
+            $data['password'] = Hash::make($data['password']);
+        } else{
+            $data = $request->validated();
+            unset($data['password']);
+        }
+
         $this->clientService->update($data, $id);
         return redirect()->route('client.index')->with('success', __('Client updated with success!'));
     }
@@ -104,5 +115,12 @@ class ClientController extends Controller
     {
         $this->clientService->destroy($id);
         return redirect()->route('client.index')->with('success', __('Client deleted with success!'));
+    }
+
+    public function publicStore(ClientCreateRequest $request): \Illuminate\Http\RedirectResponse{
+        $all = $request->except('c-password', '_token');
+        $data = $request->validated();
+        $this->clientService->create($data);
+        return redirect()->route('login')->with('success', __('Client created with success!'));
     }
 }

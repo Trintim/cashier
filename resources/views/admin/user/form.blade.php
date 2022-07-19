@@ -11,6 +11,45 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <label class="col-sm-2 col-form-label" for="input-phone">{{ __('Phone') }}</label>
+    <div class="col-sm-7">
+        <div class="form-group">
+            <input class="form-control" name="phone" id="input-phone"
+                   type="text" placeholder="{{ __('Phone') }}" value="{{ isset($user) ? $user->phone : old('phone') }}" required/>
+            @if ($errors->has('phone'))
+                <span id="phone-error" class="error text-danger"
+                      for="input-phone">{{ $errors->first('phone') }}</span>
+            @endif
+        </div>
+    </div>
+</div>
+<div class="row">
+    <label class="col-sm-2 col-form-label" for="input-occupation">{{ __('Cargo') }}</label>
+    <div class="col-sm-7">
+        <div class="form-group">
+            <input class="form-control" name="occupation" id="input-occupation"
+                   type="text" placeholder="{{ __('occupation') }}" value="{{ isset($user) ? $user->occupation : old('occupation') }}" required/>
+            @if ($errors->has('occupation'))
+                <span id="occupation-error" class="error text-danger"
+                      for="input-occupation">{{ $errors->first('occupation') }}</span>
+            @endif
+        </div>
+    </div>
+</div>
+<div class="row">
+    <label class="col-sm-2 col-form-label">{{ __('Nivel De Acesso') }}</label>
+    <div class="col-sm-7">
+        <div class="form-group{{ $errors->has('access_level') ? ' has-danger' : '' }}">
+            <select id="access_level" name="access_level" class="form-control" required @if (!(Auth::user()->access_level == 0)) readonly=readonly tabindex=-1 @endif>
+                <option value="">--- Selecione a opção ---</option>
+                <option @if (isset($user) && $user->access_level == 0) selected @endif value="0">Administrator Master</option>
+                <option @if (isset($user) && $user->access_level == 1) selected @endif value="1">Moderador</option>
+                <option @if (isset($user) && $user->access_level == 2) selected @endif value="2">Usuário</option>
+            </select>
+        </div>
+    </div>
+</div>
 @if (!isset($user))
     <div class="row">
         <label class="col-sm-2 col-form-label">{{ __('Email') }}</label>
@@ -50,6 +89,26 @@
                           for="input-password">{{ $errors->first('password') }}</span>
                 @endif
             </div>
+        </div>
+    </div>
+@endif
+<div class="row">
+    <label class="col-sm-2 col-form-label">{{ __('Foto') }}</label>
+    <div class="col-sm-7">
+        <div class="input-group mb-3">
+            <input class="form-control" name="image" id="input-image"
+                type="file" placeholder="{{ __('image') }}" value="{{ isset($user) ? $user->image : old('image') }}" {{ isset($user) ? '' : 'required' }}/>
+            @if ($errors->has('image'))
+                <span id="image-error" class="error text-danger" for="input-image">{{ $errors->first('image') }}</span>
+            @endif
+        </div>
+    </div>
+</div>
+@if(isset($user))
+    <div class="row">
+        <label class="col-sm-2 col-form-label">{{ __('Foto Atual') }}</label>
+        <div class="col-sm-7" style="display: flex;justify-content:center">
+            <div><img class="img-fluid" src="/storage/{{$user->image }}" alt="image" style="max-height: 300px;border-radius:10px ;object-fit: cover"></div>
         </div>
     </div>
 @endif

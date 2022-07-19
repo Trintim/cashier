@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repository\Interfaces\UserRepositoryInterface;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 
 class UserService
@@ -42,6 +43,8 @@ class UserService
         $attributes['password'] = Hash::make($attributes['password']);
         $user = $this->userRepository->create($attributes);
         $this->logService->create($user->id, $user->name, 'users.create');
+
+        event(new Registered($user));
         return $user;
     }
 
