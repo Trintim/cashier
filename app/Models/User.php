@@ -53,10 +53,10 @@ class User extends Authenticated implements MustVerifyEmail
      */
     protected $fillable = [
         'name',
+        'image',
         'email',
         'phone',
         'occupation',
-        'email',
         'password',
         'access_level',
         'locale',
@@ -91,9 +91,9 @@ class User extends Authenticated implements MustVerifyEmail
     public function getAccessLevelNameAttribute(): string
     {
         return match ($this->access_level) {
-            0 => __('Administrator'),
-            1 => __('Moderator'),
-            2 => __('Client'),
+            0 => __('Administrador Master'),
+            1 => __('Administrador'),
+            2 => __('Cliente'),
             default => __('Usuário'),
         };
     }

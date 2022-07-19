@@ -7,6 +7,7 @@ use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\ClientController;
 use App\Http\Web\Controllers\ClientDashBoardController;
+use App\Http\Web\Controllers\SistemaController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [SistemaController::class, 'index'])->name('usuario');
+
+Route::get('/cadastro', [SistemaController::class, 'cadastro'])->name('cadastro');
 
 Route::middleware('locale')->group(function () {
 
@@ -72,8 +76,9 @@ Route::middleware('locale')->group(function () {
                 Route::any('log', [LogController::class, 'index'])->name('log.index');
 
                 //User CRUD routes
-                Route::resource('user', UserController::class, ['except' => ['show']]);
+                Route::resource('user', UserController::class);
                 //Client CRUD routes
+                Route::resource('client', ClientController::class);
             });
         });
     });

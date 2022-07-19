@@ -8,7 +8,7 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Services\UserService;
 use Auth;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -43,7 +43,7 @@ class UserController extends Controller
      */
     public function create(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $userLogged = @Auth::user();
+        $userLogged = @Auth()->user();
         $this->authorize('create', $userLogged);
         return view('admin.user.crud');
     }
@@ -100,10 +100,11 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $user = User::find($id);
-        $userLogged = @Auth::user();
+
+        $userLogged = @Auth()->user();
         $this->authorize('update', $userLogged);
         if ($request->hasFile('image')){
-            Storage::delete('public/'. $user->image);
+            Storage::delete('public/' . $user->image);
             $data['image'] = $request->file('image')->store('user', 'public');
         }
 
@@ -124,7 +125,7 @@ class UserController extends Controller
 
         $user = User::find($id);
         if ($user->image != null){
-            Storage::delete('public/'. $user->image);
+            Storage::delete('public/' . $user->image);
         }
         $this->userService->destroy($id);
         return redirect()->route('user.index')->with('success', __('User deleted with success!'));

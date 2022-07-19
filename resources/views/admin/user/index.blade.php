@@ -176,13 +176,13 @@
                             AccessLevelName = 'Administrador Master'
                         }
                         else if(resposta.access_level == 1){
-                            AccessLevelName = 'Moderador'
+                            AccessLevelName = 'Administrador'
                         }
                         else if(resposta.access_level == 2){
-                            AccessLevelName = 'Usuário'
+                            AccessLevelName = 'Cliente'
                         }
                         else{
-                            AccessLevelName = 'Membro'
+                            AccessLevelName = 'Usuário'
                         }
                     }
                     $("#detalhes-name").val(resposta.name);

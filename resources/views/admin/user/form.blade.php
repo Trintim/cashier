@@ -44,8 +44,8 @@
             <select id="access_level" name="access_level" class="form-control" required @if (!(Auth::user()->access_level == 0)) readonly=readonly tabindex=-1 @endif>
                 <option value="">--- Selecione a opção ---</option>
                 <option @if (isset($user) && $user->access_level == 0) selected @endif value="0">Administrator Master</option>
-                <option @if (isset($user) && $user->access_level == 1) selected @endif value="1">Moderador</option>
-                <option @if (isset($user) && $user->access_level == 2) selected @endif value="2">Usuário</option>
+                <option @if (isset($user) && $user->access_level == 1) selected @endif value="1">Administrator</option>
+                <option @if (isset($user) && $user->access_level == 2) selected @endif value="2">Cliente</option>
             </select>
         </div>
     </div>

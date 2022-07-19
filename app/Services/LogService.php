@@ -46,6 +46,13 @@ class LogService
     {
         /** @var \App\Models\User $user */
         $user = auth()->user();
+
+        if (!isset($user)) {
+            $user = new \App\Models\User();
+            $user->name = 'Sistema';
+            $user->id = 0;
+        }
+
         $logMessage = '[' . $user->id . ' - ' . $user->name . '];;[' . $createdId . ' - ' . $createdName . ']';
         return $this->logRepository->create(['log' => $logMessage, 'category' => $category]);
     }

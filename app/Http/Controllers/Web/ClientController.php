@@ -90,13 +90,13 @@ class ClientController extends Controller
      */
     public function update(ClientUpdateRequest $request, int $id): \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
     {
-        if(isset($request['password']) && !(is_null($request['password']))){
-            $request->validated([
+        if (isset($request['password']) && !(is_null($request['password']))) {
+            $request->validate([
                 'password' => 'required|string|min:8'
             ]);
             $data = $request->validated();
             $data['password'] = Hash::make($data['password']);
-        } else{
+        } else {
             $data = $request->validated();
             unset($data['password']);
         }

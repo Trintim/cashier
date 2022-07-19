@@ -50,7 +50,7 @@ class ClientService
             'occupation' => $attributes['profession'],
             'email' => $attributes['email'],
             'password' => $attributes['password'],
-            'access_level' => 50,
+            'access_level' => 2,
             'role' => 'client',
             'email_verified_at' => null,
             'locale' => 'pt-BR',

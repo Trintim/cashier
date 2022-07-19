@@ -246,12 +246,12 @@
         <div class="form-group{{ $errors->has('plan') ? ' has-danger' : '' }}">
             <select class="form-control{{ $errors->has('plan') ? ' is-invalid' : '' }}" name="plan"
                 id="input-plan" required>
-                <option {{(isset($client) ? $client->plan : old('plan')) === "Soluções em Escala" ? 'selected' : ''}}
-                    value="Soluções em Escala">Soluções em Escala</option>
-                <option {{(isset($client) ? $client->plan : old('plan')) === "Soluções em Profundidade" ? 'selected' : ''}}
-                    value="Soluções em Profundidade">Soluções em Profundidade</option>
-                <option {{(isset($client) ? $client->plan : old('plan')) === "Solução de Assinaturas" ? 'selected' : ''}}
-                    value="Solução de Assinaturas">Solução de Assinaturas</option>
+                <option {{(isset($client) ? $client->plan : old('plan')) === "Plano Mensal" ? 'selected' : ''}}
+                    value="Plano Mensal">Plano Mensal</option>
+                <option {{(isset($client) ? $client->plan : old('plan')) === "Plano Trimestral" ? 'selected' : ''}}
+                    value="Plano Trimestral">Plano Trimestral</option>
+                <option {{(isset($client) ? $client->plan : old('plan')) === "Plano Anual" ? 'selected' : ''}}
+                    value="Plano Anual">Plano Anual</option>
             </select>
             @if ($errors->has('plan'))
                 <span id="plan-error" class="error text-danger"
