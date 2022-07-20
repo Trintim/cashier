@@ -19,6 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const DASHBOARD = '/admin/dashboard';
     public const CLIENTELOGGED = '/cliente';
+    //public const VERIFY_EMAIL = '/cliente/verificaremail';
     public const HOME = '/';
 
     /**

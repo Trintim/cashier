@@ -5,7 +5,7 @@
             <script>
                 document.write(new Date().getFullYear())
             </script>, {{ __('Made with') }} <i class="material-icons">favorite</i> {{ __('by') }}
-            <a href="https://adapti.info/" target="_blank">Hub do Cricaré - {{ __('Solutions') }}</a>.
+            <a href="https://hubdocricare.com.br" target="_blank">Hub do Cricaré - {{ __('Solutions') }}</a>.
         </div>
         <nav class="float-right">
             <ul>

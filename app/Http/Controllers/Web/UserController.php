@@ -7,7 +7,7 @@ use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Services\UserService;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -45,6 +45,7 @@ class UserController extends Controller
     {
         $userLogged = @Auth()->user();
         $this->authorize('create', $userLogged);
+
         return view('admin.user.crud');
     }
 
@@ -56,6 +57,7 @@ class UserController extends Controller
      */
     public function store(UserCreateRequest $request): \Illuminate\Http\RedirectResponse
     {
+
         $data = $request->validated();
 
 

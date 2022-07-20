@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ClientCreateRequest;
 use App\Http\Requests\ClientUpdateRequest;
 use App\Services\ClientService;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
 {
@@ -117,7 +117,8 @@ class ClientController extends Controller
         return redirect()->route('client.index')->with('success', __('Client deleted with success!'));
     }
 
-    public function publicStore(ClientCreateRequest $request): \Illuminate\Http\RedirectResponse{
+    public function publicStore(ClientCreateRequest $request): \Illuminate\Http\RedirectResponse
+    {
         $all = $request->except('c-password', '_token');
         $data = $request->validated();
         $this->clientService->create($data);

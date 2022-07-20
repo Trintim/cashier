@@ -9,7 +9,7 @@
     <main id="main">
         <section id="login">
             <div class="login">
-                <form class="login-form-container" action="{{ route('dashboard') }}" method="POST">
+                <form class="login-form-container" action="{{ route('login') }}" method="POST">
                     <img class="login-logo" src="{{ asset('/assets/img/') }}" alt="logo">
                     @csrf
                     <div class="form-group">

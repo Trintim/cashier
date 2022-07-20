@@ -26,10 +26,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', [SistemaController::class, 'index'])->name('usuario');
-// Route::get('/cliente', [ClientDashboardController::class, 'index'])->name('logado');
-// Route::get('/login', [SistemaController::class, 'loginSis'])->name('loginuser');
 Route::get('/cadastro', [SistemaController::class, 'cadastro'])->name('cadastro');
-// Route::get('/recuperar', [SistemaController::class, 'senha'])->name('password.request');
 
 Route::middleware('locale')->group(function () {
 
